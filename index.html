@@ -25,8 +25,7 @@
             var song_path = '';
             var song = new Audio('audio/flautefail.mp3');
             var duration = song.duration;
-            https://soundcloud.com/oficial-anitta/indecente
-            /* DEFINE QUAIS OS ELEMENTOS MOSTRADOS QUANDO A PAGINA É CARREGADA */
+
             $("#musicname").show();
             $("#seek").hide();
             $("#tempocorrido").hide();
@@ -42,7 +41,6 @@
             }
 
             /* VIDA AOS BOTOES */
-            /* ACTION AO CLICK DO PLAY */
             $('body').on('click', '#play', function (e) {
                 e.preventDefault();
                 song.play();
@@ -59,7 +57,7 @@
                 $(".conteudo").css("margin-top", "9px");
 
             });
-            /* ACTION AO CLICK DO PAUSE */
+
             $('body').on('click', '#pause', function (e) {
                 e.preventDefault();
                 song.pause();
@@ -69,18 +67,21 @@
                     $(this).replaceWith('<a class="button " id="play" href="" title=""><img src="img/playbutton.png"></a>');
                 });
             });
-            /* ATUALIZAÇÃO DO TEMPO DA BARRA */ 
+
             $("#seek").bind("change", function () {
                 song.currentTime = $(this).val();
                 $("#seek").attr("max", song.duration);
             });
-            /* EVENTO DE ATUALIZAÇÃO DOS ELEMENTOS MUTAVEIS */
+
             song.addEventListener('timeupdate', function () {
                 console.log("timeupdate", song.duration, song.currentTime);
                 var curtime = parseInt(song.currentTime);
                 $("#seek").val(curtime);
                 var seconds = curtime % 60 < 10 ? "0" + (curtime % 60) : (curtime % 60);
                 $("#tempocorrido").val(parseInt(curtime / 60) + ":" + seconds);
+
+
+
             });
         }); 
     </script>
